@@ -1,0 +1,73 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-unescaped-entities": "off",
+    "no-debugger": "off",
+    "no-console": "warn",
+    "class-methods-use-this": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/default-param-last": "off",
+    "import/no-named-as-default": "off",
+    "no-param-reassign": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "import/first": "off",
+    "import/no-cycle": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/no-throw-literal": 0,
+    "import/consistent-type-specifier-style": ["warn", "prefer-inline"],
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "newlines-between": "always",
+        "named": {
+          "enabled": true,
+          "types": "types-last"
+        },
+        "alphabetize": {
+          "order": "asc"
+        },
+        "warnOnUnassignedImports": true
+      }
+    ]
+  }
+}
