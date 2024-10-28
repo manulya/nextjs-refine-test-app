@@ -8,6 +8,8 @@ You are here to test your skills in creating frontend applications.
 
 You will write a small application that lets your users view candidates for their projects or other needs. Actually, we don't care about it in our app.
 
+You can find the test data in `public/data.json`.
+
 ## Tasks
 
 ### Required
