@@ -11,6 +11,7 @@ import React, { Suspense } from "react";
 
 import { ColorModeContextProvider } from "@contexts/color-mode";
 import DevtoolsProvider from "@providers/devtools";
+import dataProviderClient from "@providers/dataProvider";
 
 export const metadata: Metadata = {
   title: "Memposit NextJS + Refine Test",
@@ -43,9 +44,22 @@ export default function RootLayout({
               <ColorModeContextProvider defaultMode={defaultMode}>
                 <RefineSnackbarProvider>
                   <Refine
+                    dataProvider={dataProviderClient}
                     routerProvider={routerProvider}
                     notificationProvider={useNotificationProvider}
                     options={refineOptions}
+                    resources={[
+                      {
+                        name: "users",
+                        list: "/users",
+                        create: "/users/create",
+                        edit: "/users/edit/:id",
+                        show: "/users/show/:id",
+                        meta: {
+                          canDelete: true,
+                        },
+                      },
+                    ]}
                   >
                     {children}
                     <RefineKbar />
