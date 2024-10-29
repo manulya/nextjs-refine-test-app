@@ -1,16 +1,7 @@
-import { AuthPage } from "@components/auth-page";
-import { authProviderServer } from "@providers/auth-provider";
 import { redirect } from "next/navigation";
 
-export default async function Login() {
-  const data = await getData();
-
-  if (data.authenticated) {
-    redirect(data?.redirectTo || "/");
-  }
-
-  return <AuthPage type="login" />;
-}
+import AuthPage from "@components/auth-page";
+import authProviderServer from "@providers/auth-provider/auth-provider.server";
 
 async function getData() {
   const { authenticated, redirectTo, error } = await authProviderServer.check();
@@ -20,4 +11,13 @@ async function getData() {
     redirectTo,
     error,
   };
+}
+export default async function Login() {
+  const data = await getData();
+
+  if (data.authenticated) {
+    redirect(data?.redirectTo || "/");
+  }
+
+  return <AuthPage type="login" />;
 }

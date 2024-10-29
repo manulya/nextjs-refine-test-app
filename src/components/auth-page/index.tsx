@@ -1,8 +1,9 @@
 "use client";
-import { AuthPage as AuthPageBase } from "@refinedev/mui";
-import type { AuthPageProps } from "@refinedev/core";
 
-export const AuthPage = (props: AuthPageProps) => {
+import { type AuthPageProps } from "@refinedev/core";
+import { AuthPage as AuthPageBase } from "@refinedev/mui";
+
+function AuthPage(props: AuthPageProps) {
   return (
     <AuthPageBase
       {...props}
@@ -14,4 +15,6 @@ export const AuthPage = (props: AuthPageProps) => {
       }}
     />
   );
-};
+}
+
+export default AuthPage;

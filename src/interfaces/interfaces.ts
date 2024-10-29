@@ -10,3 +10,10 @@ export interface IUser {
 export interface IData {
   data: IUser[]; // Массив пользователей
 }
+
+export interface IAuth {
+  email: string;
+  name: string;
+  avatar: string;
+  roles: string[];
+}

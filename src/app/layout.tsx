@@ -6,15 +6,15 @@ import {
 } from "@refinedev/mui";
 import routerProvider from "@refinedev/nextjs-router";
 import { Metadata } from "next";
+import { Montserrat, Nunito } from "next/font/google";
 import { cookies } from "next/headers";
 import React, { Suspense } from "react";
 
-import { ColorModeContextProvider } from "@contexts/color-mode";
-import dataProviderClient from "@providers/dataProvider";
-import { ConstantsProvider } from "@contexts/select-items";
-import Head from "next/head";
-import { authProvider } from "@providers/auth-provider";
 import Footer from "@components/footer";
+import { ColorModeContextProvider } from "@contexts/color-mode";
+import { ConstantsProvider } from "@contexts/select-items";
+import authProvider from "@providers/auth-provider/auth-provider";
+import dataProviderClient from "@providers/dataProvider";
 
 export const metadata: Metadata = {
   title: "Memposit NextJS + Refine Test",
@@ -29,7 +29,19 @@ const refineOptions: IRefineOptions = {
   },
 };
 
-export default async function RootLayout({
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["200", "400", "600", "800", "1000"],
+  variable: "--nunito",
+  display: "swap",
+});
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["200", "400", "500", "600", "700", "800"],
+  variable: "--montserrat",
+});
+
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -40,13 +52,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      <body>
+      <body className={`${nunito.variable} ${montserrat.variable}`}>
         <Suspense>
           <RefineKbarProvider>
             <ColorModeContextProvider defaultMode={defaultMode}>

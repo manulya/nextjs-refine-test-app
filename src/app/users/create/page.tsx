@@ -10,7 +10,6 @@ import { Controller } from "react-hook-form";
 
 import { useConstants } from "@contexts/select-items";
 import { IUser } from "@interfaces/interfaces";
-import { Typography } from "@mui/material";
 
 function UserCreate() {
   const {

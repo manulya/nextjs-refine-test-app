@@ -1,9 +1,10 @@
 "use client";
 
+import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 import { AppBar, Box, IconButton, Stack, Typography } from "@mui/material";
 import { useContext } from "react";
+
 import { ColorModeContext } from "@contexts/color-mode";
-import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 
 function Footer() {
   const { mode, setMode } = useContext(ColorModeContext);
@@ -28,7 +29,7 @@ function Footer() {
             {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
           </IconButton>
         </Box>
-        <Typography variant="body2" alignSelf={"center"}>
+        <Typography variant="body2" alignSelf="center">
           © Ulyana Manuilova Test App
         </Typography>
       </Stack>

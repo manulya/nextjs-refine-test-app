@@ -1,7 +1,9 @@
 "use client";
 
-import type { AuthBindings } from "@refinedev/core";
+import { HttpError, type AuthBindings } from "@refinedev/core";
 import Cookies from "js-cookie";
+
+import { IAuth } from "@interfaces/interfaces";
 
 const mockUsers = [
   {
@@ -12,8 +14,9 @@ const mockUsers = [
   },
 ];
 
-export const authProvider: AuthBindings = {
+const authProvider: AuthBindings = {
   login: async ({ email }) => {
+    await Promise.resolve();
 
     const user = mockUsers.find((item) => item.email === email);
 
@@ -36,9 +39,10 @@ export const authProvider: AuthBindings = {
       },
     };
   },
-  register: async (params) => {
-    // Suppose we actually send a request to the back end here.
-    const user = mockUsers.find((item) => item.email === params.email);
+  register: async (params: { email: string }) => {
+    await Promise.resolve();
+
+    const user = mockUsers.find((item: IAuth) => item.email === params.email);
 
     if (user) {
       Cookies.set("auth", JSON.stringify(user), {
@@ -58,12 +62,12 @@ export const authProvider: AuthBindings = {
       },
     };
   },
-  forgotPassword: async (params) => {
-    // Suppose we actually send a request to the back end here.
+  forgotPassword: async (params: { email: string }) => {
+    await Promise.resolve();
+
     const user = mockUsers.find((item) => item.email === params.email);
 
     if (user) {
-      //we can send email with reset password link here
       return {
         success: true,
       };
@@ -78,6 +82,8 @@ export const authProvider: AuthBindings = {
   },
 
   logout: async () => {
+    await Promise.resolve();
+
     Cookies.remove("auth", { path: "/" });
     return {
       success: true,
@@ -85,6 +91,7 @@ export const authProvider: AuthBindings = {
     };
   },
   check: async () => {
+    await Promise.resolve();
     const auth = Cookies.get("auth");
     if (auth) {
       return {
@@ -98,17 +105,24 @@ export const authProvider: AuthBindings = {
       redirectTo: "/login",
     };
   },
-  
+
   getIdentity: async () => {
+    await Promise.resolve();
     const auth = Cookies.get("auth");
     if (auth) {
-      const parsedUser = JSON.parse(auth);
+      const parsedUser = JSON.parse(auth) as IAuth;
+
       return parsedUser;
     }
     return null;
   },
-  onError: async (error) => {
-    if (error.response?.status === 401) {
+  onError: async (error: HttpError | Error) => {
+    await Promise.resolve();
+
+    if (
+      "response" in error &&
+      (error.response as { status?: number })?.status === 401
+    ) {
       return {
         logout: true,
       };
@@ -117,3 +131,5 @@ export const authProvider: AuthBindings = {
     return { error };
   },
 };
+
+export default authProvider;
