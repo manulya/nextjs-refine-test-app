@@ -1,8 +1,22 @@
 {
   "data": [
     {
+      "first_name": "Ulyana",
+      "last_name": "Manuilova",
+      "job_title": "Frontend developer:)",
+      "seniority_level": "Junior",
+      "skills": [
+        "React",
+        "Next",
+        "Refine",
+        "MUI",
+        "JavaScript"
+      ],
+      "id": "1FBLC5ICXLRQ6IRJ"
+    },
+    {
       "id": "8LG43BG85SQHQ3T6",
-      "first_name": "Nikitaa",
+      "first_name": "Nikita",
       "last_name": "Cummings",
       "job_title": "Research scientist",
       "seniority_level": "Middle",
@@ -24,7 +38,8 @@
         "C#",
         "React",
         "Astro",
-        "EntityManager"
+        "EntityManager",
+        "Python"
       ]
     },
     {

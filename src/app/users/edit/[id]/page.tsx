@@ -22,10 +22,25 @@ function UserEdit() {
   } = useForm<IUser, HttpError>();
 
   return (
-    <Edit saveButtonProps={saveButtonProps}>
+    <Edit
+      saveButtonProps={saveButtonProps}
+      wrapperProps={{
+        sx: {
+          maxHeight: "100vh",
+          padding: "20px 5%",
+          margin: "0 auto",
+        },
+      }}
+    >
       <Box
         component="form"
-        sx={{ display: "flex", flexDirection: "column" }}
+        sx={{
+          width: "80%",
+          maxWidth: "600px",
+          margin: "0 auto",
+          display: "flex",
+          flexDirection: "column",
+        }}
         autoComplete="off"
       >
         <TextField

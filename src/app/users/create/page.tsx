@@ -10,6 +10,7 @@ import { Controller } from "react-hook-form";
 
 import { useConstants } from "@contexts/select-items";
 import { IUser } from "@interfaces/interfaces";
+import { Typography } from "@mui/material";
 
 function UserCreate() {
   const {
@@ -22,11 +23,22 @@ function UserCreate() {
   const { seniorityLevels, skillsOptions } = useConstants();
 
   return (
-    <Create saveButtonProps={saveButtonProps}>
+    <Create
+      saveButtonProps={saveButtonProps}
+      wrapperProps={{
+        sx: {
+          padding: "44px 5% 0px",
+        },
+      }}
+    >
       <Box
         component="form"
-        sx={{ display: "flex", flexDirection: "column" }}
         autoComplete="off"
+        sx={{
+          width: "80%",
+          maxWidth: "600px",
+          margin: "0 auto",
+        }}
       >
         <TextField
           id="first_name"

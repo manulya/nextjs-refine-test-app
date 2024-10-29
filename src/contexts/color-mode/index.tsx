@@ -2,9 +2,8 @@
 
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
-import { ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { RefineThemes } from "@refinedev/mui";
 import Cookies from "js-cookie";
 import React, {
   createContext,
@@ -60,12 +59,39 @@ export const ColorModeContextProvider: React.FC<
     }),
     [toggleTheme, mode],
   );
+  const theme = createTheme({
+    typography: {
+      fontFamily:
+        '"Montserrat", "Nunito", "Roboto", "Helvetica", "Arial", sans-serif',
+    },
+    palette: {
+      mode: mode === "light" ? "light" : "dark",
+      primary: {
+        light: mode === "light" ? "#65D3D3" : "#1EB2B2",
+        main: "#03B0B0",
+        dark: mode === "light" ? "#007B7B" : "#005B5B",
+        contrastText: "#FFFFFF",
+      },
+      secondary: {
+        light: mode === "light" ? "#FFABAB" : "#FF7E7E",
+        main: "#FF4F4F",
+        dark: mode === "light" ? "#BF0000" : "#9A0000",
+        contrastText: "#FFFFFF",
+      },
+      background: {
+        paper: mode === "light" ? "#FFFFFF" : "#201f1f",
+        default: mode === "light" ? "#F4F4F4" : "#1D1D1D",
+      },
+      text: {
+        primary: mode === "light" ? "#000000" : "#FFFFFF",
+        secondary: mode === "light" ? "#333333" : "#B0B0B0",
+      },
+    },
+  });
 
   return (
     <ColorModeContext.Provider value={contextValue}>
-      <ThemeProvider
-        theme={mode === "light" ? RefineThemes.Orange : RefineThemes.OrangeDark}
-      >
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
         {children}

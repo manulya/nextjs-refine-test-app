@@ -35,7 +35,7 @@ function UsersPage() {
       {
         field: "job_title",
         headerName: "Job Title",
-        flex: 1,
+        flex: 2,
       },
       {
         field: "seniority_level",
@@ -45,7 +45,7 @@ function UsersPage() {
       {
         field: "skills",
         headerName: "Skills",
-        flex: 1,
+        flex: 2,
         renderCell: (params: GridRenderCellParams<IUser, "skills">) => {
           const skills = params.value;
           return Array.isArray(skills) && skills.length > 0
@@ -86,6 +86,19 @@ function UsersPage() {
         paginationModel={paginationModel}
         onPaginationModelChange={onPaginationModelChange}
         autoHeight
+        sx={{
+          borderRadius: "15px",
+          overflow: "hidden",
+          "& .MuiDataGrid-columnHeaders": {
+            fontWeight: "bold",
+          },
+          "& .MuiDataGrid-cell": {
+            borderBottom: "1px solid #E0E0E0",
+            "&:hover": {
+              backgroundColor: "#03b0b03f",
+            },
+          },
+        }}
       />
     </List>
   );
