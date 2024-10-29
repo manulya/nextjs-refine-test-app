@@ -1,3 +1,14 @@
+# RESULTS
+
+- **Candidate Management**: Users can view a list, view one, edit, and delete candidate profiles.
+- **Pagination**: The candidate list includes pagination functionality.
+- **Mock Authentication**: I have implemented a mock authentication system that encompasses:
+  - **Registration**: Users can create an account using mock data.
+  - **Login**: Users can log in to their accounts, with protected routes ensuring that only authenticated users can access certain areas of the application.
+  - **Fake Password Change**: Users have the option to simulate changing their password.
+  - **Logout**: Seamless logout functionality is available for users.
+- **Interface Customization**: The application supports customization of the user interface, including theme switching options.
+
 # Memposit NextJS Refine Test
 
 Hello, fellow developer!
