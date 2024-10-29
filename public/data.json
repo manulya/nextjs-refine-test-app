@@ -2,15 +2,16 @@
   "data": [
     {
       "id": "8LG43BG85SQHQ3T6",
-      "first_name": "Nikita",
+      "first_name": "Nikitaa",
       "last_name": "Cummings",
       "job_title": "Research scientist",
-      "seniority_level": "Junior",
+      "seniority_level": "Middle",
       "skills": [
         "C#",
         "React",
         "NuxtJS",
-        "Spring"
+        "Spring",
+        "JavaScript"
       ]
     },
     {
@@ -655,12 +656,13 @@
       "first_name": "Ricki",
       "last_name": "Jarrell",
       "job_title": "Logistics/distribution manager",
-      "seniority_level": "Junior",
+      "seniority_level": "Senior",
       "skills": [
         "Python",
         "React",
         "Remix",
-        "EntityManager"
+        "EntityManager",
+        "Next"
       ]
     },
     {
@@ -1299,17 +1301,6 @@
         "NuxtJS",
         "Spring"
       ]
-    },
-    {
-      "first_name": "test",
-      "last_name": "test",
-      "job_title": "test",
-      "seniority_level": "Mid-level",
-      "skills": [
-        "NuxtJS",
-        "React"
-      ],
-      "id": 1730186106332
     }
   ]
 }

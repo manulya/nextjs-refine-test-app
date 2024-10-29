@@ -1,14 +1,19 @@
 "use client";
 
+import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
+import {
+  DeleteButton,
+  EditButton,
+  List,
+  ShowButton,
+  useDataGrid,
+} from "@refinedev/mui";
 import React from "react";
-import { EditButton, List, ShowButton, useDataGrid } from "@refinedev/mui";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+
 import { IUser } from "@interfaces/interfaces";
 
 function UsersPage() {
-  const { dataGridProps } = useDataGrid<IUser>(
-    {resource: "users"},
-  );
+  const { dataGridProps } = useDataGrid<IUser>({ resource: "users" });
 
   const columns = React.useMemo<GridColDef<IUser>[]>(
     () => [
@@ -41,7 +46,25 @@ function UsersPage() {
         field: "skills",
         headerName: "Skills",
         flex: 1,
-        renderCell: (params) => params.value.join(", "), // Отображаем навыки через запятую
+        renderCell: (params: GridRenderCellParams<IUser, "skills">) => {
+          const skills = params.value;
+          return Array.isArray(skills) && skills.length > 0
+            ? skills.join(", ")
+            : "No skills available";
+        },
+      },
+      {
+        field: "actions",
+        headerName: "Actions",
+        width: 150,
+        sortable: false,
+        renderCell: (params: GridRenderCellParams<IUser, "actions">) => (
+          <>
+            <ShowButton hideText recordItemId={params.row.id.toString()} />
+            <EditButton hideText recordItemId={params.row.id.toString()} />
+            <DeleteButton hideText recordItemId={params.row.id.toString()} />
+          </>
+        ),
       },
     ],
     [],

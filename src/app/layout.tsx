@@ -12,6 +12,7 @@ import React, { Suspense } from "react";
 import { ColorModeContextProvider } from "@contexts/color-mode";
 import DevtoolsProvider from "@providers/devtools";
 import dataProviderClient from "@providers/dataProvider";
+import { ConstantsProvider } from "@contexts/select-items";
 
 export const metadata: Metadata = {
   title: "Memposit NextJS + Refine Test",
@@ -61,7 +62,7 @@ export default function RootLayout({
                       },
                     ]}
                   >
-                    {children}
+                    <ConstantsProvider>{children}</ConstantsProvider>
                     <RefineKbar />
                   </Refine>
                 </RefineSnackbarProvider>

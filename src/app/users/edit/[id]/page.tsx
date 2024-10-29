@@ -1,17 +1,19 @@
 "use client";
 
-import Autocomplete from "@mui/material/Autocomplete";
+import { Autocomplete } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { HttpError } from "@refinedev/core";
-import { Create } from "@refinedev/mui";
+import { Edit } from "@refinedev/mui";
 import { useForm } from "@refinedev/react-hook-form";
 import { Controller } from "react-hook-form";
 
 import { useConstants } from "@contexts/select-items";
 import { IUser } from "@interfaces/interfaces";
 
-function UserCreate() {
+function UserEdit() {
+  const { seniorityLevels, skillsOptions } = useConstants();
+
   const {
     saveButtonProps,
     register,
@@ -19,10 +21,8 @@ function UserCreate() {
     formState: { errors },
   } = useForm<IUser, HttpError>();
 
-  const { seniorityLevels, skillsOptions } = useConstants();
-
   return (
-    <Create saveButtonProps={saveButtonProps}>
+    <Edit saveButtonProps={saveButtonProps}>
       <Box
         component="form"
         sx={{ display: "flex", flexDirection: "column" }}
@@ -38,8 +38,12 @@ function UserCreate() {
           margin="normal"
           fullWidth
           label="First Name"
+          name="first_name"
+          autoFocus
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
-
         <TextField
           id="last_name"
           {...register("last_name", {
@@ -50,8 +54,11 @@ function UserCreate() {
           margin="normal"
           fullWidth
           label="Last Name"
+          name="last_name"
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
-
         <TextField
           id="job_title"
           {...register("job_title", {
@@ -62,6 +69,10 @@ function UserCreate() {
           margin="normal"
           fullWidth
           label="Job Title"
+          name="job_title"
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
 
         <Controller
@@ -114,8 +125,8 @@ function UserCreate() {
           )}
         />
       </Box>
-    </Create>
+    </Edit>
   );
 }
 
-export default UserCreate;
+export default UserEdit;
