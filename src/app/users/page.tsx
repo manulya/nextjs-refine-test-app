@@ -9,19 +9,18 @@ function UsersPage() {
   const { dataGridProps } = useDataGrid<IUser>(
     {resource: "users"},
   );
-  console.log(dataGridProps);
 
   const columns = React.useMemo<GridColDef<IUser>[]>(
     () => [
       {
         field: "id",
         headerName: "ID",
-        width: 100,
+        width: 150,
       },
       {
         field: "first_name",
         headerName: "First Name",
-        flex: 1, // Автоматически занимает доступное пространство
+        flex: 1,
       },
       {
         field: "last_name",

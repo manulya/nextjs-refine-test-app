@@ -1299,6 +1299,17 @@
         "NuxtJS",
         "Spring"
       ]
+    },
+    {
+      "first_name": "test",
+      "last_name": "test",
+      "job_title": "test",
+      "seniority_level": "Mid-level",
+      "skills": [
+        "NuxtJS",
+        "React"
+      ],
+      "id": 1730186106332
     }
   ]
 }

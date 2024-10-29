@@ -1,6 +1,6 @@
 import { IData } from "@interfaces/interfaces";
 
-import { promises as fs } from "fs"; // Импортируем promises API
+import { promises as fs } from "fs";
 
 import { NextResponse } from "next/server";
 
@@ -37,13 +37,19 @@ export async function GET(req: Request) {
 export async function POST(request: Request) {
   try {
     const data = await readData();
+
     const newUser = await request.json();
+
     newUser.id = Date.now();
-    data.users.push(newUser);
-    await fs.writeFile(filePath, JSON.stringify(data, null, 2)); // Асинхронная запись данных
+    data.data.push(newUser);
+
+    await fs.writeFile(
+      `${process.cwd()}/public/data.json`,
+      JSON.stringify(data, null, 2),
+    );
+
     return NextResponse.json(newUser, { status: 201 });
   } catch (error) {
-    console.error("Ошибка POST запроса:", error);
     return NextResponse.json(
       { message: "Something went wrong" },
       { status: 500 },
